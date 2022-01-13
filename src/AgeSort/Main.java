@@ -15,8 +15,8 @@ class Pair{
     public String second() {
         return name;
     }
-    @Override
-    public String toString() {
+
+    public String toResult() {
         return age + " " + name;
     }
 }
@@ -32,14 +32,14 @@ public class Main {
             Pair pair = new Pair(first, second);
             list.add(pair);
         }
-        Collections.sort(list, new Comparator<Pair>() {
+        list.sort(new Comparator<Pair>() {
             @Override
             public int compare(Pair o1, Pair o2) {
                 return o1.age - o2.age;
             }
         });
         for (Pair i : list) {
-            System.out.println(i);
+            System.out.println(i.toResult());
         }
     }
 }
