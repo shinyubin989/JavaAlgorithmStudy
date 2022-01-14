@@ -7,19 +7,37 @@ public class Main {
   public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    StringBuilder sb = new StringBuilder();
     int num = Integer.parseInt(br.readLine());
-    Stack<String> stack = new Stack<>();
-//    String word = "POWER"; //스트링 문자 POWER
-//    String[] array_word; // 스트링을 담을 배열
-//
-//    array_word = word.split(""); //배열에 한글자씩 저장하기
-//
-//    for(int i=0;i<array_word.length;i++) { //출력
-//      System.out.println(array_word[i]);
-//    }
+    int count = 0;
+
+    // (()())((()))
+
     for (int i = 0; i < num; i++) {
-      String
+      char[] arr = br.readLine().toCharArray();
+      for (int j = 0; j < arr.length; j++) {
+        if (count >= 0) {
+          if (arr[j] == '(') {
+            count++;
+          } else {
+            count--;
+          }
+        }
+        else {
+          break;
+        }
+      }
+      if (count == 0) {
+        sb.append("YES").append("\n");
+
+      } else {
+        sb.append("NO").append("\n");
+      }
+      count = 0;
+
     }
+    System.out.println(sb);
+
   }
 }
 
