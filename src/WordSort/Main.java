@@ -1,48 +1,39 @@
 package WordSort;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
-
-  public static StringBuilder sb = new StringBuilder();
-
-  public static int size;
-  public static String[] str;
-  public static int[] temp = new int[6];
-
   public static void main(String[] args) throws IOException {
-
+    System.setIn(new FileInputStream("src/WordSort/input.txt"));
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    size = Integer.parseInt(br.readLine());
-    str = new String[size];
-
-    for (int i = 0; i < size; i++) {
-      str[i] = br.readLine();
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    int num = Integer.parseInt(br.readLine());
+    String[] input = new String[num];
+    for (int i = 0; i < num; i++) {
+      input[i] = br.readLine();
     }
-
-    Arrays.sort(str, new Comparator<String>() {
-
+    Arrays.sort(input, new Comparator<String>() {
       @Override
-      public int compare(String  s1, String s2) {
-        if(s1.length() == s2.length()){
-          return s1.compareTo(s2);
-        }
-        else {
-          return s1.length() - s2.length();
+      public int compare(String o1, String o2) {
+        if (o1.length() == o2.length()) {
+          return o1.compareTo(o2);
+        } else {
+          return o1.length() - o2.length();
         }
       }
     });
 
-    sb.append(str[0]).append("\n");
-    for (int i = 1; i < size; i++) {
-      if(!str[i].equals(str[i-1]))
-        sb.append(str[i]).append("\n");
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append(input[0]).append("\n");
+    for (int i = 1; i < num; i++) {
+      if (!input[i].equals(input[i - 1])) {
+        stringBuilder.append(input[i]).append("\n");
+      }
     }
+    System.out.println(stringBuilder);
 
-    System.out.println(sb);
+
   }
 }
