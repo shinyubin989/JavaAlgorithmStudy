@@ -24,7 +24,7 @@ class Result {
   public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
     List<Integer> rank = ranked.stream().distinct().collect(toList());
     List<Integer> answer = new ArrayList<>();
-    for (int element : rank) {
+    for (int element : player) {
       // element가 가작 작은 경우
       if (element < rank.get(rank.size() - 1)) {
         answer.add(rank.size() + 1);
